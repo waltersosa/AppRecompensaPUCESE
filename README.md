@@ -27,13 +27,53 @@ npm install
 
 ## Ejecución
 
-Iniciar el servidor de desarrollo:
+### Desarrollo Normal (PC):
 
 ```bash
 npm run dev
 ```
 
-Compilar para producción:
+### 📱 Desarrollo Móvil (con QR Code):
+
+```bash
+# Inicia el servidor con QR para probar en navegador móvil
+npm run dev:mobile
+```
+
+**¡Escanea el QR con la cámara de tu móvil y listo!** 📲
+
+### 📦 Construir App Móvil Nativa (APK/IPA):
+
+#### Opción A: Solo Emulador (Recomendado - Sin Android Studio) ⭐
+
+```bash
+# 1. Agregar plataforma Android (solo primera vez)
+npm run add:android
+
+# 2. Construir APK automáticamente
+npm run build:apk
+
+# 3. Ver en emulador (solo el celular, sin IDE)
+npm run emulator
+```
+
+**📖 Lee `GUIA_EMULADOR.md` para ver solo el celular**
+
+#### Opción B: Con Android Studio
+
+```bash
+# 1. Construir y sincronizar
+npm run build:mobile
+
+# 2. Abrir en Android Studio
+npm run android
+
+# 3. En Android Studio: Build → Build APK
+```
+
+**📖 Lee `GUIA_APP_NATIVA.md` para instrucciones completas**
+
+### Compilar para producción web:
 
 ```bash
 npm run build

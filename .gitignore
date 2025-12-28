@@ -62,3 +62,11 @@ Thumbs.db
 # Cursor specific
 .cursor/
 
+# Keep scripts folder
+!scripts/
+
+# Capacitor
+android/
+ios/
+.capacitor/
+
