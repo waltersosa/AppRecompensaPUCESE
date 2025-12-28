@@ -3,8 +3,7 @@ import { Toaster } from './components/ui/sonner';
 import { Login } from './components/Login';
 import { Inicio } from './components/Inicio';
 import { Actividades } from './components/Actividades';
-import { RFIDScanner } from './components/RFIDScanner';
-import { Puntos } from './components/Puntos';
+import { Monedas } from './components/Monedas';
 import { Recompensas } from './components/Recompensas';
 import { Perfil } from './components/Perfil';
 import { AdminDashboard } from './components/AdminDashboard';
@@ -20,8 +19,7 @@ export default function App() {
           {/* Rutas de Estudiante */}
           <Route path="/estudiante/inicio" element={<Inicio />} />
           <Route path="/estudiante/actividades" element={<Actividades />} />
-          <Route path="/estudiante/rfid" element={<RFIDScanner />} />
-          <Route path="/estudiante/puntos" element={<Puntos />} />
+          <Route path="/estudiante/monedas" element={<Monedas />} />
           <Route path="/estudiante/recompensas" element={<Recompensas />} />
           <Route path="/estudiante/perfil" element={<Perfil />} />
 

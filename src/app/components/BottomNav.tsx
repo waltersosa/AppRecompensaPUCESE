@@ -8,7 +8,7 @@ export function BottomNav() {
   const navItems = [
     { to: '/estudiante/inicio', icon: Home, label: 'Inicio' },
     { to: '/estudiante/actividades', icon: Calendar, label: 'Actividades' },
-    { to: '/estudiante/puntos', icon: Coins, label: 'Puntos' },
+    { to: '/estudiante/monedas', icon: Coins, label: 'Monedas' },
     { to: '/estudiante/perfil', icon: User, label: 'Perfil' },
   ];
 

@@ -6,7 +6,7 @@ import { BottomNav } from './BottomNav';
 import { mockUsuario, mockHistorial } from '../data/mockData';
 import { cn } from './ui/utils';
 
-export function Puntos() {
+export function Monedas() {
   const getCategoriaIcon = (categoria: string) => {
     switch (categoria) {
       case 'academica':
@@ -46,8 +46,8 @@ export function Puntos() {
 
   // Cálculo para nivel
   const proximoNivel = 500;
-  const progreso = (mockUsuario.puntosTotales / proximoNivel) * 100;
-  const nivelActual = Math.floor(mockUsuario.puntosTotales / 200) + 1;
+  const progreso = (mockUsuario.monedasTotales / proximoNivel) * 100;
+  const nivelActual = Math.floor(mockUsuario.monedasTotales / 200) + 1;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-muted to-white pb-20">
@@ -55,7 +55,7 @@ export function Puntos() {
       <div className="bg-gradient-to-r from-[#003DA5] to-[#0052D9] text-white p-6 pb-32 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-20 translate-x-20"></div>
         <div className="relative">
-          <h1 className="text-2xl font-bold mb-1">Mis Puntos</h1>
+          <h1 className="text-2xl font-bold mb-1">Mis Monedas</h1>
           <p className="text-sm text-white/80">Tu progreso y logros 🏆</p>
         </div>
       </div>
@@ -69,8 +69,8 @@ export function Puntos() {
               <div>
                 <p className="text-sm text-white/90 mb-2">Saldo Total</p>
                 <div className="flex items-baseline gap-3">
-                  <h2 className="text-6xl font-extrabold">{mockUsuario.puntosTotales}</h2>
-                  <span className="text-xl font-medium">pts</span>
+                  <h2 className="text-6xl font-extrabold">{mockUsuario.monedasTotales}</h2>
+                  <span className="text-xl font-medium">monedas</span>
                 </div>
               </div>
               <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center">
@@ -90,7 +90,7 @@ export function Puntos() {
               </div>
               <Progress value={progreso} className="h-3 bg-white/30" />
               <p className="text-xs mt-2 text-white/90">
-                {proximoNivel - mockUsuario.puntosTotales} puntos para subir de nivel
+                {proximoNivel - mockUsuario.monedasTotales} monedas para subir de nivel
               </p>
             </div>
 
@@ -120,13 +120,13 @@ export function Puntos() {
           </CardHeader>
           <CardContent className="space-y-4">
             {['academica', 'cultural', 'deportiva'].map(categoria => {
-              const puntos = mockHistorial
+              const monedas = mockHistorial
                 .filter(h => h.categoria === categoria)
-                .reduce((sum, h) => sum + h.puntos, 0);
+                .reduce((sum, h) => sum + h.monedas, 0);
               const Icon = getCategoriaIcon(categoria);
               const gradient = getCategoriaGradient(categoria);
               const cantidad = mockHistorial.filter(h => h.categoria === categoria).length;
-              const porcentaje = (puntos / mockUsuario.puntosTotales) * 100;
+              const porcentaje = (monedas / mockUsuario.monedasTotales) * 100;
 
               return (
                 <div key={categoria} className="space-y-2">
@@ -144,7 +144,7 @@ export function Puntos() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-2xl font-extrabold text-[#F59E0B]">{puntos}</p>
+                      <p className="text-2xl font-extrabold text-[#F59E0B]">{monedas}</p>
                       <p className="text-xs text-muted-foreground">{porcentaje.toFixed(0)}%</p>
                     </div>
                   </div>
@@ -165,7 +165,7 @@ export function Puntos() {
           </div>
           
           {Object.entries(historialPorMes).map(([mesAnio, items]) => {
-            const totalMes = items.reduce((sum, item) => sum + item.puntos, 0);
+            const totalMes = items.reduce((sum, item) => sum + item.monedas, 0);
             
             return (
               <Card key={mesAnio} className="shadow-md">
@@ -173,7 +173,7 @@ export function Puntos() {
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-base capitalize font-bold">{mesAnio}</CardTitle>
                     <Badge className="bg-gradient-to-r from-[#F59E0B] to-[#FCD34D] border-0 font-bold">
-                      +{totalMes} pts
+                      +{totalMes} monedas
                     </Badge>
                   </div>
                 </CardHeader>
@@ -206,7 +206,7 @@ export function Puntos() {
                           </div>
                         </div>
                         <Badge className="bg-success text-success-foreground shrink-0 font-bold">
-                          +{item.puntos}
+                          +{item.monedas}
                         </Badge>
                       </div>
                     );
@@ -233,3 +233,4 @@ export function Puntos() {
     </div>
   );
 }
+

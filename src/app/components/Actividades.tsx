@@ -49,7 +49,7 @@ export function Actividades() {
       <div className="bg-gradient-to-r from-[#003DA5] to-[#0052D9] text-white p-6 pb-8 shadow-lg">
         <h1 className="text-2xl font-bold mb-1">Actividades</h1>
         <p className="text-sm text-white/80">
-          ¡Participa y suma puntos! 🚀
+          ¡Participa y gana monedas! 🚀
         </p>
       </div>
 
@@ -121,7 +121,7 @@ export function Actividades() {
                             <IconoCategoria className="w-5 h-5" />
                           </div>
                           <Badge className="bg-gradient-to-r from-[#F59E0B] to-[#FCD34D] border-0 text-white font-bold">
-                            +{actividad.puntos} pts
+                            +{actividad.monedas} monedas
                           </Badge>
                         </div>
                         <CardTitle className="text-base mb-2">{actividad.nombre}</CardTitle>

@@ -13,7 +13,7 @@ export function Inicio() {
   
   // Cálculo para barra de progreso hacia siguiente nivel
   const proximoNivel = 500;
-  const progreso = (mockUsuario.puntosTotales / proximoNivel) * 100;
+  const progreso = (mockUsuario.monedasTotales / proximoNivel) * 100;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-muted to-white pb-20">
@@ -35,17 +35,17 @@ export function Inicio() {
       </div>
 
       <div className="max-w-md mx-auto px-4 -mt-24 space-y-4">
-        {/* Card de Puntos Protagonista */}
+        {/* Card de Monedas Protagonista */}
         <Card className="bg-gradient-to-br from-[#F59E0B] via-[#FCD34D] to-[#F59E0B] text-white border-0 shadow-2xl overflow-hidden relative">
           <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl translate-x-10 -translate-y-10"></div>
           <CardHeader className="relative">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <CardDescription className="text-white/90 text-sm mb-1">
-                  Tus Puntos
+                  Tus Monedas
                 </CardDescription>
                 <CardTitle className="text-6xl font-extrabold mb-3">
-                  {mockUsuario.puntosTotales}
+                  {mockUsuario.monedasTotales}
                 </CardTitle>
                 <div className="flex items-center gap-2 text-sm">
                   <TrendingUp className="w-4 h-4" />
@@ -61,11 +61,11 @@ export function Inicio() {
             <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-4">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium">Próximo nivel</span>
-                <span className="text-sm font-bold">{proximoNivel} pts</span>
+                <span className="text-sm font-bold">{proximoNivel} monedas</span>
               </div>
               <Progress value={progreso} className="h-2 bg-white/30" />
               <p className="text-xs mt-2 text-white/80">
-                ¡Solo {proximoNivel - mockUsuario.puntosTotales} puntos para el siguiente nivel! 🎯
+                ¡Solo {proximoNivel - mockUsuario.monedasTotales} monedas para el siguiente nivel! 🎯
               </p>
             </div>
           </CardContent>
@@ -81,7 +81,7 @@ export function Inicio() {
                   Última participación
                 </CardTitle>
                 <Badge className="bg-success text-success-foreground animate-pulse">
-                  ¡Sumaste puntos!
+                  ¡Sumaste monedas!
                 </Badge>
               </div>
             </CardHeader>
@@ -97,8 +97,8 @@ export function Inicio() {
                   </p>
                 </div>
                 <div className="text-right">
-                  <div className="text-3xl font-bold text-[#F59E0B]">+{ultimaActividad.puntos}</div>
-                  <p className="text-xs text-muted-foreground">puntos</p>
+                  <div className="text-3xl font-bold text-[#F59E0B]">+{ultimaActividad.monedas}</div>
+                  <p className="text-xs text-muted-foreground">monedas</p>
                 </div>
               </div>
             </CardContent>
@@ -109,14 +109,14 @@ export function Inicio() {
         <div className="grid grid-cols-2 gap-3">
           <Card 
             className="cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-primary/10 bg-gradient-to-br from-white to-accent/30" 
-            onClick={() => navigate('/estudiante/rfid')}
+            onClick={() => navigate('/estudiante/actividades')}
           >
             <CardContent className="pt-6 text-center">
               <div className="w-14 h-14 bg-gradient-to-br from-[#003DA5] to-[#0052D9] rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
                 <Calendar className="w-7 h-7 text-white" />
               </div>
-              <p className="font-bold text-base mb-1">Registrar</p>
-              <p className="text-xs text-muted-foreground">Escanea tu credencial</p>
+              <p className="font-bold text-base mb-1">Actividades</p>
+              <p className="text-xs text-muted-foreground">Ver oportunidades</p>
             </CardContent>
           </Card>
 
@@ -172,7 +172,7 @@ export function Inicio() {
                     </p>
                   </div>
                   <Badge className="bg-gradient-to-r from-[#F59E0B] to-[#FCD34D] border-0">
-                    +{actividad.puntos}
+                    +{actividad.monedas}
                   </Badge>
                 </div>
               ))}

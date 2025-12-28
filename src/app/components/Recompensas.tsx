@@ -41,14 +41,14 @@ export function Recompensas() {
 
   const handleCanjear = () => {
     if (selectedRecompensa) {
-      if (mockUsuario.puntosTotales >= selectedRecompensa.costoPuntos) {
+      if (mockUsuario.monedasTotales >= selectedRecompensa.costoMonedas) {
         toast.success('¡Recompensa canjeada! 🎉', {
           description: `Has canjeado ${selectedRecompensa.nombre}. Revisa tu correo para más detalles.`,
         });
         setSelectedRecompensa(null);
       } else {
-        toast.error('Puntos insuficientes 😔', {
-          description: `Te faltan ${selectedRecompensa.costoPuntos - mockUsuario.puntosTotales} puntos más. ¡Sigue participando!`,
+        toast.error('Monedas insuficientes 😔', {
+          description: `Te faltan ${selectedRecompensa.costoMonedas - mockUsuario.monedasTotales} monedas más. ¡Sigue participando!`,
         });
       }
     }
@@ -75,12 +75,12 @@ export function Recompensas() {
           </div>
         </div>
         
-        {/* Saldo de puntos en header */}
+        {/* Saldo de monedas en header */}
         <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-xs text-white/80 mb-1">Tienes disponibles</p>
-              <p className="text-3xl font-extrabold">{mockUsuario.puntosTotales}</p>
+              <p className="text-3xl font-extrabold">{mockUsuario.monedasTotales}</p>
             </div>
             <div className="w-14 h-14 bg-gradient-to-br from-[#F59E0B] to-[#FCD34D] rounded-2xl flex items-center justify-center shadow-lg">
               <Sparkles className="w-8 h-8 text-white" />
@@ -95,7 +95,7 @@ export function Recompensas() {
           {mockRecompensas.map(recompensa => {
             const Icon = getCategoriaIcon(recompensa.categoria);
             const gradient = getCategoriaGradient(recompensa.categoria);
-            const puedesCanjear = mockUsuario.puntosTotales >= recompensa.costoPuntos;
+            const puedesCanjear = mockUsuario.monedasTotales >= recompensa.costoMonedas;
 
             return (
               <Dialog key={recompensa.id}>
@@ -150,7 +150,7 @@ export function Recompensas() {
                               : 'bg-muted text-muted-foreground'
                           )}
                         >
-                          {recompensa.costoPuntos} pts
+                          {recompensa.costoMonedas} monedas
                         </Badge>
                       </div>
                       
@@ -160,7 +160,7 @@ export function Recompensas() {
                         </span>
                         {!puedesCanjear && (
                           <span className="text-destructive font-medium">
-                            Te faltan {recompensa.costoPuntos - mockUsuario.puntosTotales} pts
+                            Te faltan {recompensa.costoMonedas - mockUsuario.monedasTotales} monedas
                           </span>
                         )}
                       </div>
@@ -191,9 +191,9 @@ export function Recompensas() {
                         <div className="bg-gradient-to-br from-accent to-accent/30 p-4 rounded-xl text-center border border-accent-foreground/10">
                           <p className="text-xs text-muted-foreground mb-1">Costo</p>
                           <p className="text-3xl font-extrabold text-[#F59E0B]">
-                            {recompensa.costoPuntos}
+                            {recompensa.costoMonedas}
                           </p>
-                          <p className="text-xs text-muted-foreground mt-1">puntos</p>
+                          <p className="text-xs text-muted-foreground mt-1">monedas</p>
                         </div>
                         <div className="bg-gradient-to-br from-accent to-accent/30 p-4 rounded-xl text-center border border-accent-foreground/10">
                           <p className="text-xs text-muted-foreground mb-1">Disponibles</p>
@@ -210,7 +210,7 @@ export function Recompensas() {
                             ¡Casi lo logras! 💪
                           </p>
                           <p className="text-xs text-muted-foreground">
-                            Solo te faltan <strong>{recompensa.costoPuntos - mockUsuario.puntosTotales} puntos</strong> para canjear esta recompensa
+                            Solo te faltan <strong>{recompensa.costoMonedas - mockUsuario.monedasTotales} monedas</strong> para canjear esta recompensa
                           </p>
                         </div>
                       )}
@@ -235,7 +235,7 @@ export function Recompensas() {
                       onClick={handleCanjear}
                       disabled={!puedesCanjear}
                     >
-                      {puedesCanjear ? '¡Canjear ahora! 🎉' : 'Puntos insuficientes'}
+                      {puedesCanjear ? '¡Canjear ahora! 🎉' : 'Monedas insuficientes'}
                     </Button>
                   </div>
                 </DialogContent>
@@ -262,7 +262,7 @@ export function Recompensas() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-xl">⚡</span>
-                <span>Los puntos se <strong>descuentan al instante</strong></span>
+                <span>Las monedas se <strong>descuentan al instante</strong></span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-xl">⏰</span>

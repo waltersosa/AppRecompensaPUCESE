@@ -21,7 +21,7 @@ export function AdminDashboard() {
   const [selectedTab, setSelectedTab] = useState('dashboard');
 
   const totalEstudiantes = 245;
-  const puntosOtorgados = mockHistorial.reduce((sum, h) => sum + h.puntos, 0);
+  const monedasOtorgadas = mockHistorial.reduce((sum, h) => sum + h.monedas, 0);
   const actividadesActivas = mockActividades.filter(a => a.estado === 'disponible').length;
   const recompensasDisponibles = mockRecompensas.reduce((sum, r) => sum + r.disponible, 0);
 
@@ -71,12 +71,12 @@ export function AdminDashboard() {
 
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription>Puntos Otorgados</CardDescription>
+              <CardDescription>Monedas Otorgadas</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-3xl font-bold text-warning">{puntosOtorgados}</p>
+                  <p className="text-3xl font-bold text-warning">{monedasOtorgadas}</p>
                   <p className="text-xs text-muted-foreground mt-1">total</p>
                 </div>
                 <Award className="w-12 h-12 text-warning opacity-20" />
@@ -140,7 +140,7 @@ export function AdminDashboard() {
                       <div className="flex-1">
                         <p className="font-medium">{actividad.nombre}</p>
                         <p className="text-sm text-muted-foreground">
-                          {new Date(actividad.fecha).toLocaleDateString('es-EC')} • {actividad.puntos} puntos
+                          {new Date(actividad.fecha).toLocaleDateString('es-EC')} • {actividad.monedas} monedas
                         </p>
                       </div>
                       <Badge variant={actividad.estado === 'disponible' ? 'default' : 'secondary'}>
@@ -182,7 +182,7 @@ export function AdminDashboard() {
                         </p>
                         <div className="flex items-center gap-4 text-xs text-muted-foreground">
                           <span>{new Date(actividad.fecha).toLocaleDateString('es-EC')}</span>
-                          <span>{actividad.puntos} puntos</span>
+                          <span>{actividad.monedas} monedas</span>
                           {actividad.ubicacion && <span>{actividad.ubicacion}</span>}
                         </div>
                       </div>
@@ -224,7 +224,7 @@ export function AdminDashboard() {
                           {recompensa.descripcion}
                         </p>
                         <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                          <span>{recompensa.costoPuntos} puntos</span>
+                          <span>{recompensa.costoMonedas} monedas</span>
                           <span>{recompensa.disponible} disponibles</span>
                         </div>
                       </div>
@@ -242,7 +242,7 @@ export function AdminDashboard() {
             <Card>
               <CardHeader>
                 <CardTitle>Reportes y Auditoría</CardTitle>
-                <CardDescription>Análisis de participación y registros RFID</CardDescription>
+                <CardDescription>Análisis de participación y actividades</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="text-center py-12">

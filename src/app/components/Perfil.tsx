@@ -22,8 +22,8 @@ export function Perfil() {
     .toUpperCase();
 
   const totalActividades = mockHistorial.length;
-  const puntosPromedioActividad = Math.round(mockUsuario.puntosTotales / totalActividades);
-  const nivelActual = Math.floor(mockUsuario.puntosTotales / 200) + 1;
+  const monedasPromedioActividad = Math.round(mockUsuario.monedasTotales / totalActividades);
+  const nivelActual = Math.floor(mockUsuario.monedasTotales / 200) + 1;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-muted to-white pb-20">
@@ -65,8 +65,8 @@ export function Perfil() {
                   <div className="w-10 h-10 bg-gradient-to-br from-[#F59E0B] to-[#FCD34D] rounded-full flex items-center justify-center mx-auto mb-2">
                     <Trophy className="w-5 h-5 text-white" />
                   </div>
-                  <p className="text-xl font-extrabold text-[#F59E0B]">{mockUsuario.puntosTotales}</p>
-                  <p className="text-xs text-muted-foreground">Puntos</p>
+                  <p className="text-xl font-extrabold text-[#F59E0B]">{mockUsuario.monedasTotales}</p>
+                  <p className="text-xs text-muted-foreground">Monedas</p>
                 </div>
                 <div className="bg-white rounded-xl p-3 text-center shadow-sm">
                   <div className="w-10 h-10 bg-gradient-to-br from-primary to-[#0052D9] rounded-full flex items-center justify-center mx-auto mb-2">
@@ -79,7 +79,7 @@ export function Perfil() {
                   <div className="w-10 h-10 bg-gradient-to-br from-success to-emerald-400 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Award className="w-5 h-5 text-white" />
                   </div>
-                  <p className="text-xl font-extrabold text-success">{puntosPromedioActividad}</p>
+                  <p className="text-xl font-extrabold text-success">{monedasPromedioActividad}</p>
                   <p className="text-xs text-muted-foreground">Promedio</p>
                 </div>
               </div>
@@ -161,8 +161,8 @@ export function Perfil() {
             <div className="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm border-2 border-warning/20">
               <div className="text-4xl">⭐</div>
               <div className="flex-1">
-                <p className="font-bold mb-1">Acumulador de Puntos</p>
-                <p className="text-xs text-muted-foreground">Tienes más de 400 puntos acumulados</p>
+                <p className="font-bold mb-1">Acumulador de Monedas</p>
+                <p className="text-xs text-muted-foreground">Tienes más de 400 monedas acumuladas</p>
               </div>
               <Badge className="bg-warning text-warning-foreground">
                 Desbloqueado
